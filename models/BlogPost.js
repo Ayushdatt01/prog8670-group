@@ -13,7 +13,7 @@ const BlogPostSchema = new Schema({
   },
 
 
-  // username: {type: String},
+  username: {type: String},
   
   datePosted: { type: Date, default: new Date() }
 });
