@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
@@ -36,7 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/post/save", customValidate);
 app.set("view engine", "ejs");
 mongoose.connect(
-  "mongodb+srv://ayushdatt001:JkkxBikoCWQqoc51@cluster0.4f1jk4u.mongodb.net/?retryWrites=true&w=majority",
+  process.env.MONGO_URL,
   { useNewUrlParser: true }
 );
 
