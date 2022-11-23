@@ -19,6 +19,7 @@ const signOutController = require("./controllers/signOut");
 const authentication = require("./middlewares/authentication");
 const redirectIfAuth = require("./middlewares/redirectIfAuth");
 const loggedIn = require("./middlewares/loggedIn");
+const mongoStore = require("connect-mongo");
 
 const app = new express();
 app.use(fileUpload());
@@ -31,6 +32,7 @@ app.use(
     secret: "testing",
     resave: false,
     saveUninitialized: true,
+    store: mongoStore.create({ mongoUrl: process.env.MONGO_URL}),
   })
 );
 app.use("*", loggedIn);
